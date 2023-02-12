@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.helmChartOne.nginx.name }}
+  name: changed-name-{{ .Values.helmChartOne.nginx.name }}
   namespace: argocd-test
   labels:
     {{- include "hello-world.labels" . | nindent 4 }}
