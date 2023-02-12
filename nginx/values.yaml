@@ -2,32 +2,33 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-nginx:
-  replicaCount: 4
-  name: presync
+helmChartOne: 
+  nginx:
+    replicaCount: 4
+    name: presync
 
-presync:
-    jobName: presync-monitoring
+  presync:
+      jobName: presync-monitoring
 
-image:
-  repository: containers.cisco.com/prkaturi/nginx
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  image:
+    repository: containers.cisco.com/prkaturi/nginx
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "latest"
 
-nameOverride: ""
-fullnameOverride: ""
+  nameOverride: ""
+  fullnameOverride: ""
 
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
+  serviceAccount:
+    # Specifies whether a service account should be created
+    create: true
+    # Annotations to add to the service account
+    annotations: {}
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    name: ""
 
-service:
-  type: ClusterIP
-  port: 80
-  name: dummy
+  service:
+    type: ClusterIP
+    port: 80
+    name: dummy

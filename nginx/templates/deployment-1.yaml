@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.nginx.name }}
+  name: {{ .Values.helmChartOne.nginx.name }}
   namespace: argocd-test
   labels:
     {{- include "hello-world.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.nginx.replicaCount }}
+  replicas: {{ .Values.helmChartOne.nginx.replicaCount }}
   selector:
     matchLabels:
       {{- include "hello-world.selectorLabels" . | nindent 6 }}
@@ -18,8 +18,8 @@ spec:
       serviceAccountName: {{ include "hello-world.serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.helmChartOne.image.repository }}:{{ .Values.helmChartOne.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.helmChartOne.image.pullPolicy }}
           ports:
             - name: http
               containerPort: 80
